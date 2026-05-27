@@ -13,25 +13,35 @@ namespace Bok.Film_info
         private void AddMovie()
         {
 
-            Movie movie = new Movie();
+                Movie movie = new Movie();
 
-            Console.WriteLine("-------Legg til film-------");
+                Console.WriteLine("-------Legg til film-------");
 
-            Console.Write("Legg til tittel: ");
-            movie.Title = Convert.ToString(Console.ReadLine());
+                Console.Write("Legg til tittel: ");
+                movie.Title = Convert.ToString(Console.ReadLine());
 
-            Console.Write("Legg til beskrivelse: ");
-            movie.Desc = Convert.ToString(Console.ReadLine());
+                Console.Write("Legg til beskrivelse: ");
+                movie.Desc = Convert.ToString(Console.ReadLine());
 
-            Console.Write("Legg til Regissør: ");
-            movie.Regissør = Convert.ToString(Console.ReadLine());
+                Console.Write("Legg til Regissør: ");
+                movie.Regissør = Convert.ToString(Console.ReadLine());
 
-            Console.Write("Legg til utgivelsesår: ");
-            movie.Year = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    Console.Write("Legg til utgivelsesår: ");
+                    movie.Year = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("---------------------------\n" +
+                                             "\tKUN NUMMER!");
+                    Console.Write("Legg til utgivelsesår: ");
+                    movie.Year = Convert.ToInt32(Console.ReadLine());
+                }
 
-            catalog.AddMovies(movie);
+                catalog.AddMovies(movie);
 
-            Console.WriteLine();
+                Console.WriteLine();
         }
 
         private void ShowMovie()
